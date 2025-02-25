@@ -1,30 +1,31 @@
-/* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+/* Fonte personalizada */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Corpo */
 body {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #fff;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    margin: 0;
 }
 
-/* Container principal */
 .container {
-    width: 600px;
-    padding: 20px;
-    border: 3px solid black;
+    width: 500px;
+    border-radius: 12px;
+    padding: 25px;
     text-align: center;
     background: white;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Área dos quadrados */
+h1 {
+    font-weight: 600;
+    color: #333;
+}
+
 .boxes {
     display: flex;
     justify-content: center;
@@ -32,67 +33,90 @@ body {
     margin-bottom: 20px;
 }
 
-/* Quadrados */
 .box {
-    width: 180px;
-    height: 180px;
-    border: 3px solid black;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Cores específicas */
 .positive {
-    background: #b6ff00; /* Verde limão */
+    background-color: #b6ff00;
+    color: #333;
 }
 
 .negative {
-    background: #ff7f00; /* Laranja */
+    background-color: #ff7f00;
+    color: white;
 }
 
-/* Linhas dentro das caixas */
-.content {
-    width: 80%;
-}
-
-.line {
-    height: 6px;
-    background: black;
-    margin: 10px 0;
-}
-
-/* Porcentagem */
 .percentage {
-    width: 50px;
-    height: 50px;
-    border: 2px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
+    margin: 0 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 18px;
     font-weight: bold;
     color: #ff7f00;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Input */
+/* Efeito de destaque para os sentimentos */
+.highlight {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilização do input */
 input {
-    width: 300px;
-    padding: 8px;
-    border: 2px solid black;
+    width: 100%;
+    padding: 12px;
     font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
 }
 
-/* Botão */
+input:focus {
+    border-color: #74ebd5;
+    box-shadow: 0px 0px 8px rgba(116, 235, 213, 0.8);
+}
+
+/* Botão estilizado */
 button {
-    padding: 8px 15px;
+    margin-top: 10px;
+    padding: 12px 18px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    border: 2px solid black;
-    background-color: white;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #74ebd5, #acb6e5);
+    color: white;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: lightgray;
+    background: linear-gradient(90deg, #56ccf2, #2f80ed);
+    transform: scale(1.05);
+}
+
+/* Animação suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

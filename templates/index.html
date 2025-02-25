@@ -4,83 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análise de Sentimento</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
-            margin: 0;
-        }
-        .container {
-            width: 600px;
-            border: 3px solid black;
-            padding: 20px;
-            text-align: center;
-            background-color: white;
-        }
-        .boxes {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .box {
-            width: 150px;
-            height: 150px;
-            border: 3px solid black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .positive {
-            background-color: #b6ff00; /* Verde limão */
-        }
-        .negative {
-            background-color: #ff7f00; /* Laranja */
-        }
-        .percentage {
-            margin: 0 15px;
-            padding: 5px;
-            border: 2px solid black;
-            font-size: 16px;
-            font-weight: bold;
-            color: #ff7f00;
-        }
-        input {
-            width: 300px;
-            padding: 8px;
-            font-size: 16px;
-        }
-        button {
-            padding: 8px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            border: 2px solid black;
-            background-color: white;
-        }
-        button:hover {
-            background-color: lightgray;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="container">
+        <h1>Análise de Sentimento 💬</h1>
+
         <div class="boxes">
-            <div class="box positive">Positivo</div>
+            <div class="box positive">Positivo 😊</div>
             <div class="percentage" id="percentage">--%</div>
-            <div class="box negative">Negativo</div>
+            <div class="box negative">Negativo 😞</div>
         </div>
 
         <form method="POST" id="sentimentForm">
-            <input type="text" name="frase" id="frase" placeholder="escreva aqui" required>
-            <button type="submit">enviar</button>
+            <input type="text" name="frase" id="frase" placeholder="Digite sua frase..." required>
+            <button type="submit">Analisar 🔍</button>
         </form>
 
         {% if resultado %}
@@ -92,11 +31,11 @@
                     document.getElementById("percentage").innerText = confianca + "%";
 
                     if (sentimento === "positivo") {
-                        document.querySelector(".positive").style.opacity = "1";
-                        document.querySelector(".negative").style.opacity = "0.4";
+                        document.querySelector(".positive").classList.add("highlight");
+                        document.querySelector(".negative").classList.remove("highlight");
                     } else {
-                        document.querySelector(".negative").style.opacity = "1";
-                        document.querySelector(".positive").style.opacity = "0.4";
+                        document.querySelector(".negative").classList.add("highlight");
+                        document.querySelector(".positive").classList.remove("highlight");
                     }
                 });
             </script>
