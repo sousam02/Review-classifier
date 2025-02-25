@@ -49,6 +49,39 @@ def predict():
         logging.error(f"Erro ao processar a requisição: {e}")
         return jsonify({'error': 'Erro interno no servidor'}), 500
 
+@app.route('/predict_text', methods=['POST'])
+def predict_multiple():
+    try:
+        data = request.get_json()
+        texto = data.get('texto')
+        
+        if not texto:
+            return jsonify({'error': 'Nenhum texto fornecido!'}), 400
+        
+        frases = [frase.strip() for frase in texto.split('.') if frase.strip()]
+        sentimentos = []
+        
+        for frase in frases:
+            nova_frase_count = vectorizer_carregado.transform([frase])
+            predicao = model_carregado.predict(nova_frase_count)
+            sentimento = "Positivo" if predicao[0] == 1 else "Negativo"
+            sentimentos.append(sentimento)
+        
+        sentimento_predominante = max(set(sentimentos), key=sentimentos.count)
+        
+        resposta = {
+            "texto": texto,
+            "frases": frases,
+            "sentimentos": sentimentos,
+            "sentimento_predominante": sentimento_predominante
+        }
+        
+        logging.info(f"Texto recebido: {texto} | Sentimento predominante: {sentimento_predominante}")
+        return jsonify(resposta)
+    
+    except Exception as e:
+        logging.error(f"Erro ao processar a requisição: {e}")
+        return jsonify({'error': 'Erro interno no servidor'}), 500
 
 @app.route('/history', methods=['GET'])
 def get_history():
