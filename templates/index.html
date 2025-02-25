@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Sentimento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Análise de Sentimento <span class="icon">💬</span></h1>
+
+        <div class="boxes">
+            <div class="box positive">Positivo 😊</div>
+            <div class="percentage" id="percentage">--%</div>
+            <div class="box negative">Negativo 😞</div>
+        </div>
+
+        <form method="POST" id="sentimentForm">
+            <input type="text" name="frase" id="frase" placeholder="Digite sua frase..." required>
+            <button type="submit">Analisar <span>🔍</span></button>
+        </form>
+
+        {% if resultado %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    let sentimento = "{{ resultado.sentimento }}";
+                    let confianca = "{{ resultado.confianca }}";
+
+                    document.getElementById("percentage").innerText = confianca + "%";
+
+                    if (sentimento === "positivo") {
+                        document.querySelector(".positive").classList.add("highlight");
+                        document.querySelector(".negative").classList.remove("highlight");
+                    } else {
+                        document.querySelector(".negative").classList.add("highlight");
+                        document.querySelector(".positive").classList.remove("highlight");
+                    }
+                });
+            </script>
+        {% endif %}
+    </div>
+
+</body>
+</html>

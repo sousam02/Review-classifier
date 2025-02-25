@@ -1,0 +1,149 @@
+/* Fonte personalizada */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    margin: 0;
+}
+
+.container {
+    width: 500px;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    background: white;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.icon {
+    font-size: 26px;
+}
+
+.boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.box {
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.positive {
+    background-color: #b6ff00;
+    color: #333;
+}
+
+.negative {
+    background-color: #ff7f00;
+    color: white;
+}
+
+.percentage {
+    margin: 0 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff7f00;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Efeito de destaque para os sentimentos */
+.highlight {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilização do input */
+input {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #74ebd5;
+    box-shadow: 0px 0px 8px rgba(116, 235, 213, 0.8);
+}
+
+/* Centralização do formulário */
+form {
+    display: flex;
+    flex-direction: column; /* Deixa os itens empilhados */
+    align-items: center; /* Centraliza tudo */
+    gap: 10px; /* Espaçamento entre input e botão */
+}
+
+/* Estilização do botão */
+button {
+    width: 50%; /* Define um tamanho confortável */
+    max-width: 200px; /* Evita que o botão fique muito grande */
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #74ebd5, #acb6e5);
+    color: white;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button span {
+    font-size: 18px;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #56ccf2, #2f80ed);
+    transform: scale(1.05);
+}
+
+/* Animação suave */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
