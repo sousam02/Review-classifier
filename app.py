@@ -1,40 +1,45 @@
 from flask import Flask, request, jsonify
 from joblib import load
 import logging
+from datetime import datetime
 
-# Configuração de logs para depuração
 logging.basicConfig(level=logging.INFO)
 
-# Carregar o modelo e o vetorizador apenas uma vez
 try:
     model_carregado, vectorizer_carregado = load('modelo_completo.joblib')
     logging.info("Modelo carregado com sucesso!")
 except Exception as e:
     logging.error(f"Erro ao carregar o modelo: {e}")
-    exit(1)  # Se não conseguir carregar, encerra a aplicação
+    exit(1)
 
-# Criar a aplicação Flask
 app = Flask(__name__)
+
+historico_requisicoes = []
 
 @app.route('/predict', methods=['POST'])
 def predict():
     """
     Endpoint que recebe uma frase via JSON e retorna se o sentimento é Positivo ou Negativo.
+    Também armazena a requisição no histórico.
     """
     try:
-        # Receber a frase do JSON enviado
         data = request.get_json()
         frase = data.get('frase')
+        
 
         if not frase:
             return jsonify({'error': 'Nenhuma frase fornecida!'}), 400
 
-        # Transformar a frase em um vetor numérico
         nova_frase_count = vectorizer_carregado.transform([frase])
 
-        # Fazer a previsão do sentimento
         predicao = model_carregado.predict(nova_frase_count)
         sentimento = "Positivo" if predicao[0] == 1 else "Negativo"
+
+        historico_requisicoes.append({
+            "frase": frase,
+            "sentimento": sentimento,
+            "data_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
 
         logging.info(f"Frase recebida: {frase} | Sentimento previsto: {sentimento}")
 
@@ -43,6 +48,15 @@ def predict():
     except Exception as e:
         logging.error(f"Erro ao processar a requisição: {e}")
         return jsonify({'error': 'Erro interno no servidor'}), 500
+
+
+@app.route('/history', methods=['GET'])
+def get_history():
+    """
+    Endpoint que retorna o histórico de requisições do usuário.
+    """
+    return jsonify(historico_requisicoes)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
