@@ -1,0 +1,98 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fff;
+}
+
+/* Container principal */
+.container {
+    width: 600px;
+    padding: 20px;
+    border: 3px solid black;
+    text-align: center;
+    background: white;
+}
+
+/* Área dos quadrados */
+.boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Quadrados */
+.box {
+    width: 180px;
+    height: 180px;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Cores específicas */
+.positive {
+    background: #b6ff00; /* Verde limão */
+}
+
+.negative {
+    background: #ff7f00; /* Laranja */
+}
+
+/* Linhas dentro das caixas */
+.content {
+    width: 80%;
+}
+
+.line {
+    height: 6px;
+    background: black;
+    margin: 10px 0;
+}
+
+/* Porcentagem */
+.percentage {
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff7f00;
+}
+
+/* Input */
+input {
+    width: 300px;
+    padding: 8px;
+    border: 2px solid black;
+    font-size: 16px;
+}
+
+/* Botão */
+button {
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid black;
+    background-color: white;
+}
+
+button:hover {
+    background-color: lightgray;
+}
