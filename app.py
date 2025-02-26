@@ -6,7 +6,9 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 
 try:
-    model_carregado, vectorizer_carregado = load('modelo_completo.joblib')
+    model_carregado = load("modelo_naive_bayes.pkl")
+
+    vectorizer_carregado = load("vetorizador.pkl")
     logging.info("Modelo carregado com sucesso!")
 except Exception as e:
     logging.error(f"Erro ao carregar o modelo: {e}")
