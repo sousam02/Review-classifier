@@ -38,23 +38,24 @@ h1 {
 .boxes {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
     gap: 15px;
 }
 
 .box {
     width: 140px;
-    height: 140px;
+    min-height: 140px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     font-size: 18px;
     font-weight: bold;
     transition: 0.3s ease;
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 .positive {
@@ -67,21 +68,18 @@ h1 {
     color: white;
 }
 
-.percentage {
-    margin: 0 15px;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ff7f00;
-    background: #fff;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    width: 100%;
 }
 
-/* Efeito de destaque para os sentimentos */
-.highlight {
-    transform: scale(1.1);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+li {
+    margin: 5px 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 /* Estilização do input */
@@ -103,15 +101,15 @@ input:focus {
 /* Centralização do formulário */
 form {
     display: flex;
-    flex-direction: column; /* Deixa os itens empilhados */
-    align-items: center; /* Centraliza tudo */
-    gap: 10px; /* Espaçamento entre input e botão */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Estilização do botão */
 button {
-    width: 50%; /* Define um tamanho confortável */
-    max-width: 200px; /* Evita que o botão fique muito grande */
+    width: 50%;
+    max-width: 200px;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
@@ -134,6 +132,12 @@ button span {
 button:hover {
     background: linear-gradient(90deg, #56ccf2, #2f80ed);
     transform: scale(1.05);
+}
+
+/* Efeito de destaque para os sentimentos */
+.highlight {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 /* Animação suave */

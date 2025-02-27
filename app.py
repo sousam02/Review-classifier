@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS  
 from joblib import load
 import logging
 from datetime import datetime
@@ -15,6 +16,7 @@ except Exception as e:
     exit(1)
 
 app = Flask(__name__)
+CORS(app)  
 
 historico_requisicoes = []
 
