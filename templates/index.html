@@ -8,20 +8,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Análise de Sentimento <span class="icon">💬</span></h1>
+        <h1>Sentiment Analysis <span class="icon">💬</span></h1>
         <div class="boxes">
             <div class="box positive">
-                <h2>Positivo 😊</h2>
+                <h2>Positive 😊</h2>
                 <ul id="positiveList"></ul>
             </div>
             <div class="box negative">
-                <h2>Negativo 😞</h2>
+                <h2>Negative 😞</h2>
                 <ul id="negativeList"></ul>
             </div>
         </div>
         <form id="sentimentForm">
-            <input type="text" name="texto" id="texto" placeholder="Digite seu texto..." required>
-            <button type="submit">Analisar <span>🔍</span></button>
+            <input type="text" name="texto" id="texto" placeholder="Enter your text..." required>
+            <button type="submit">Analyze <span>🔍</span></button>
         </form>
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
