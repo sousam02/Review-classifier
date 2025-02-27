@@ -7,9 +7,7 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 
 try:
-    model_carregado = load("modelo_naive_bayes.pkl")
-
-    vectorizer_carregado = load("vetorizador.pkl")
+    model_carregado, vectorizer_carregado = load('modelo_completo.joblib')
     logging.info("Modelo carregado com sucesso!")
 except Exception as e:
     logging.error(f"Erro ao carregar o modelo: {e}")
@@ -72,6 +70,12 @@ def predict_multiple():
             sentimentos.append(sentimento)
         
         sentimento_predominante = max(set(sentimentos), key=sentimentos.count)
+
+        historico_requisicoes.append({
+            "texto": texto,
+            "sentimento": sentimento_predominante,
+            "data_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
         
         resposta = {
             "texto": texto,

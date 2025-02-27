@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('sentimentForm');
-    const fraseInput = document.getElementById('frase');
+    const textoInput = document.getElementById('texto');
     const positiveList = document.getElementById('positiveList');
     const negativeList = document.getElementById('negativeList');
 
@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
             positiveList.innerHTML = '';
             negativeList.innerHTML = '';
 
-            // Atualiza as listas com as frases do histórico
+            // Atualiza as listas com as textos do histórico
             history.forEach(item => {
                 const li = document.createElement('li');
-                li.textContent = item.frase;
+                li.textContent = item.texto;
                 if (item.sentimento === "Positivo") {
                     positiveList.appendChild(li);
                 } else {
@@ -31,21 +31,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Função para enviar a frase e buscar o histórico
+    // Função para enviar o texto e buscar o histórico
     async function handleSubmit(event) {
         event.preventDefault();
         
-        const frase = fraseInput.value.trim();
-        console.log(frase);
-        console.log(JSON.stringify({ frase }));
-        if (!frase) return;
+        const texto = textoInput.value.trim();
+        console.log(texto);
+        console.log(JSON.stringify({ texto }));
+        if (!texto) return;
 
         try {
-            // Envia a frase para análise
-            const response = await fetch('http://127.0.0.1:5000/predict', {
+            // Envia o texto para análise
+            const response = await fetch('http://127.0.0.1:5000/predict_text', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ frase })
+                body: JSON.stringify({ texto })
             });
 
             if (!response.ok) throw new Error('Erro na requisição de predição');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Limpa o campo de entrada
-        fraseInput.value = '';
+        textoInput.value = '';
     }
 
     // Adiciona o event listener ao formulário
