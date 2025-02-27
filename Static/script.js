@@ -3,6 +3,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const textoInput = document.getElementById('texto');
     const positiveList = document.getElementById('positiveList');
     const negativeList = document.getElementById('negativeList');
+    const positivePercentage = document.getElementById('positivePercentage');
+    const negativePercentage = document.getElementById('negativePercentage');
+
+    // Função para calcular e atualizar as porcentagens
+    function updatePercentages(positiveCount, negativeCount) {
+        const totalCount = positiveCount + negativeCount;
+        if (totalCount === 0) {
+            positivePercentage.textContent = '0%';
+            negativePercentage.textContent = '0%';
+        } else {
+            const positivePercent = ((positiveCount / totalCount) * 100).toFixed(2);
+            const negativePercent = ((negativeCount / totalCount) * 100).toFixed(2);
+            positivePercentage.textContent = `${positivePercent}%`;
+            negativePercentage.textContent = `${negativePercent}%`;
+        }
+    }
 
     // Função para obter o histórico e atualizar as listas
     async function fetchHistory() {
@@ -16,16 +32,24 @@ document.addEventListener('DOMContentLoaded', function() {
             positiveList.innerHTML = '';
             negativeList.innerHTML = '';
 
+            let positiveCount = 0;
+            let negativeCount = 0;
+
             // Atualiza as listas com as textos do histórico
             history.forEach(item => {
                 const li = document.createElement('li');
                 li.textContent = item.texto;
                 if (item.sentimento === "Positivo") {
                     positiveList.appendChild(li);
+                    positiveCount++;
                 } else {
                     negativeList.appendChild(li);
+                    negativeCount++;
                 }
             });
+
+            // Atualiza as porcentagens
+            updatePercentages(positiveCount, negativeCount);
         } catch (error) {
             console.error(error.message);
         }
