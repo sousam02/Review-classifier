@@ -68,6 +68,12 @@ def predict_multiple():
             sentimentos.append(sentimento)
         
         sentimento_predominante = max(set(sentimentos), key=sentimentos.count)
+
+        historico_requisicoes.append({
+            "texto": texto,
+            "sentimento": sentimento_predominante,
+            "data_hora": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
         
         resposta = {
             "texto": texto,
